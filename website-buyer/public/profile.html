@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; connect-src 'self' http://localhost:5000;" />
+  <title>Profile - HostelEats</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/responsive.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div class="container header-inner">
+      <a href="/" class="back-btn">←</a>
+      <h2>Profile</h2>
+    </div>
+  </header>
+
+  <main class="container profile-page">
+    <div class="profile-card" id="profileCard"></div>
+
+    <section class="card">
+      <h3>Update Profile</h3>
+      <form id="profileForm">
+        <label>Name<input name="name" id="nameInput" type="text" required /></label>
+        <label>Phone<input name="phone" id="phoneInput" type="tel" pattern="[0-9]{10}" required /></label>
+      </form>
+      <button class="btn btn-primary btn-block" id="saveProfileBtn">Save Changes</button>
+    </section>
+
+    <section class="card">
+      <h3>Change Password</h3>
+      <form id="passwordForm">
+        <label>Current Password<input name="currentPassword" type="password" required /></label>
+        <label>New Password<input name="newPassword" type="password" minlength="6" required /></label>
+      </form>
+      <button class="btn btn-secondary btn-block" id="changePassBtn">Change Password</button>
+    </section>
+
+    <button class="btn btn-danger btn-block" id="logoutBtn">Logout</button>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="/"><span>🏠</span><small>Home</small></a>
+    <a href="/orders.html"><span>📦</span><small>Orders</small></a>
+    <a href="/checkout.html"><span>🛒</span><small>Cart</small></a>
+    <a href="/profile.html" class="active"><span>👤</span><small>Profile</small></a>
+  </nav>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="/js/core/security.js"></script>
+  <script src="/js/core/api.js"></script>
+  <script src="/js/core/auth.js"></script>
+  <script src="/js/utils/helpers.js"></script>
+  <script src="/js/pages/profile.js"></script>
+</body>
+</html>

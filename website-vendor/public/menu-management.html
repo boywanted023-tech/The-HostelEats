@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; connect-src 'self' http://localhost:5000;" />
+  <title>Menu Management - HostelEats Vendor</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/responsive.css" />
+</head>
+<body>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header"><h2>HostelEats</h2></div>
+    <nav class="sidebar-nav">
+      <a href="/"><span>📊</span> Dashboard</a>
+      <a href="/orders.html"><span>📦</span> Orders</a>
+      <a href="/menu-management.html" class="active"><span>🍽️</span> Menu</a>
+      <a href="/earnings.html"><span>💰</span> Earnings</a>
+      <a href="/settings.html"><span>⚙️</span> Settings</a>
+      <a href="#" id="logoutLink"><span>🚪</span> Logout</a>
+    </nav>
+  </aside>
+
+  <div class="main-content">
+    <header class="topbar">
+      <button class="menu-toggle" id="menuToggle">☰</button>
+      <h1>Menu Management</h1>
+      <button class="btn btn-primary" id="addItemBtn">+ Add Item</button>
+    </header>
+
+    <main class="content-area">
+      <div class="filter-bar">
+        <input type="search" id="searchInput" placeholder="Search items..." />
+        <select id="categoryFilter">
+          <option value="">All Categories</option>
+          <option>Breakfast</option><option>Lunch</option><option>Snacks</option>
+          <option>Dinner</option><option>Beverages</option>
+        </select>
+      </div>
+
+      <table class="data-table" id="menuTable">
+        <thead>
+          <tr>
+            <th>Name</th><th>Category</th><th>Price</th><th>Prep Time</th>
+            <th>Type</th><th>Status</th><th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="menuTableBody"></tbody>
+      </table>
+    </main>
+  </div>
+
+  <div id="itemModal" class="modal hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="modalTitle">Add Item</h3>
+        <button class="modal-close" id="modalClose">✕</button>
+      </div>
+      <form id="itemForm">
+        <input type="hidden" name="_id" />
+        <label>Name<input name="name" type="text" required maxlength="80" /></label>
+        <label>Description<textarea name="description" maxlength="300"></textarea></label>
+        <div class="form-row">
+          <label>Price<input name="price" type="number" min="0" step="1" required /></label>
+          <label>Prep Time (min)<input name="preparationTime" type="number" min="1" max="120" required /></label>
+        </div>
+        <label>Category
+          <select name="category" required>
+            <option value="">Select</option>
+            <option>Breakfast</option><option>Lunch</option><option>Snacks</option>
+            <option>Dinner</option><option>Beverages</option>
+          </select>
+        </label>
+        <div class="form-row">
+          <label class="checkbox"><input type="checkbox" name="isVeg" checked /> Vegetarian</label>
+          <label>Spice Level
+            <select name="spiceLevel">
+              <option>Mild</option><option>Medium</option><option>Hot</option>
+            </select>
+          </label>
+        </div>
+        <label class="checkbox"><input type="checkbox" name="isAvailable" checked /> Available</label>
+      </form>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" id="cancelBtn">Cancel</button>
+        <button class="btn btn-primary" id="saveBtn">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="/js/core/security.js"></script>
+  <script src="/js/core/api.js"></script>
+  <script src="/js/core/auth.js"></script>
+  <script src="/js/utils/helpers.js"></script>
+  <script src="/js/pages/menu.js"></script>
+</body>
+</html>

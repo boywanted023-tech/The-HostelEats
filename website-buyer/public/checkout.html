@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; connect-src 'self' http://localhost:5000;" />
+  <title>Checkout - HostelEats</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/responsive.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div class="container header-inner">
+      <a href="/" class="back-btn">←</a>
+      <h2>Checkout</h2>
+    </div>
+  </header>
+
+  <main class="container checkout-page">
+    <section class="card">
+      <h3>Order Summary</h3>
+      <div id="cartItems"></div>
+      <div class="totals" id="cartTotals"></div>
+    </section>
+
+    <section class="card">
+      <h3>Delivery Address</h3>
+      <form id="addressForm">
+        <label>Block
+          <select name="block" required>
+            <option value="">Select</option>
+            <option>A</option><option>B</option><option>C</option><option>D</option>
+            <option>E</option><option>F</option><option>G</option><option>H</option>
+          </select>
+        </label>
+        <label>Floor<input name="floor" type="text" required maxlength="10" /></label>
+        <label>Room Number<input name="roomNumber" type="text" required maxlength="20" /></label>
+        <label>Landmark (optional)<input name="landmark" type="text" maxlength="100" /></label>
+      </form>
+    </section>
+
+    <section class="card">
+      <h3>Special Instructions</h3>
+      <textarea id="specialInstructions" maxlength="200" placeholder="Any special requests?"></textarea>
+    </section>
+
+    <section class="card">
+      <h3>Payment Method</h3>
+      <label class="radio"><input type="radio" name="paymentMethod" value="COD" checked /> Cash on Delivery</label>
+      <label class="radio"><input type="radio" name="paymentMethod" value="UPI" /> UPI</label>
+      <label class="radio"><input type="radio" name="paymentMethod" value="Online" /> Online</label>
+    </section>
+
+    <button class="btn btn-primary btn-block" id="placeOrderBtn">Place Order</button>
+  </main>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="/js/core/security.js"></script>
+  <script src="/js/core/api.js"></script>
+  <script src="/js/core/auth.js"></script>
+  <script src="/js/utils/helpers.js"></script>
+  <script src="/js/pages/cart.js"></script>
+  <script src="/js/pages/checkout.js"></script>
+</body>
+</html>

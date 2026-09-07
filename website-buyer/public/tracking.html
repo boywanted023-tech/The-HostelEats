@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; connect-src 'self' http://localhost:5000 ws://localhost:5000;" />
+  <title>Order Tracking - HostelEats</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/responsive.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div class="container header-inner">
+      <a href="/orders.html" class="back-btn">←</a>
+      <h2>Track Order</h2>
+    </div>
+  </header>
+
+  <main class="container tracking-page">
+    <div class="order-id-card" id="orderIdCard"></div>
+
+    <div class="progress-tracker">
+      <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+      <div class="status-steps" id="statusSteps"></div>
+    </div>
+
+    <section class="card">
+      <h3>Order Items</h3>
+      <div id="orderItems"></div>
+    </section>
+
+    <section class="card">
+      <h3>Delivery Address</h3>
+      <div id="deliveryAddress"></div>
+    </section>
+
+    <section class="card">
+      <h3>Live Status</h3>
+      <div id="liveStatus">Waiting...</div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="/js/core/security.js"></script>
+  <script src="/js/core/api.js"></script>
+  <script src="/js/core/auth.js"></script>
+  <script src="/js/core/socket.js"></script>
+  <script src="/js/utils/helpers.js"></script>
+  <script src="/js/pages/tracking.js"></script>
+</body>
+</html>

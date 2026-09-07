@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; img-src 'self' data: https:; connect-src 'self' http://localhost:5000 ws://localhost:5000; font-src 'self' https://fonts.gstatic.com;" />
+  <title>HostelEats Vendor - Dashboard</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/responsive.css" />
+</head>
+<body>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <h2>HostelEats</h2>
+      <button class="sidebar-close" id="sidebarClose">✕</button>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="/" class="active"><span>📊</span> Dashboard</a>
+      <a href="/orders.html"><span>📦</span> Orders</a>
+      <a href="/menu-management.html"><span>🍽️</span> Menu</a>
+      <a href="/earnings.html"><span>💰</span> Earnings</a>
+      <a href="/settings.html"><span>⚙️</span> Settings</a>
+      <a href="#" id="logoutLink"><span>🚪</span> Logout</a>
+    </nav>
+  </aside>
+
+  <div class="main-content">
+    <header class="topbar">
+      <button class="menu-toggle" id="menuToggle">☰</button>
+      <h1 id="pageTitle">Dashboard</h1>
+      <div class="topbar-actions">
+        <label class="switch">
+          <input type="checkbox" id="shopOpenToggle" />
+          <span class="slider"></span>
+          <span class="switch-label">Open</span>
+        </label>
+      </div>
+    </header>
+
+    <main class="content-area">
+      <div class="stat-grid" id="statGrid">
+        <div class="stat-card"><div class="stat-label">Pending</div><div class="stat-value" id="statPending">-</div></div>
+        <div class="stat-card"><div class="stat-label">Active</div><div class="stat-value" id="statActive">-</div></div>
+        <div class="stat-card"><div class="stat-label">Delivered Today</div><div class="stat-value" id="statDelivered">-</div></div>
+        <div class="stat-card"><div class="stat-label">Revenue (7d)</div><div class="stat-value" id="statRevenue">-</div></div>
+      </div>
+
+      <section class="card">
+        <h3>Recent Orders</h3>
+        <div id="recentOrders"></div>
+      </section>
+    </main>
+  </div>
+
+  <div id="toast" class="toast"></div>
+  <audio id="alertSound" preload="auto">
+    <source src="data:audio/wav;base64,UklGRlIFAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YS4FAAB+f3+Af39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/f39/" type="audio/wav">
+  </audio>
+
+  <script src="/js/core/security.js"></script>
+  <script src="/js/core/api.js"></script>
+  <script src="/js/core/auth.js"></script>
+  <script src="/js/core/socket.js"></script>
+  <script src="/js/utils/helpers.js"></script>
+  <script src="/js/pages/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; connect-src 'self' http://localhost:5000;" />
+  <title>Settings - HostelEats Vendor</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/responsive.css" />
+</head>
+<body>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header"><h2>HostelEats</h2></div>
+    <nav class="sidebar-nav">
+      <a href="/"><span>📊</span> Dashboard</a>
+      <a href="/orders.html"><span>📦</span> Orders</a>
+      <a href="/menu-management.html"><span>🍽️</span> Menu</a>
+      <a href="/earnings.html"><span>💰</span> Earnings</a>
+      <a href="/settings.html" class="active"><span>⚙️</span> Settings</a>
+      <a href="#" id="logoutLink"><span>🚪</span> Logout</a>
+    </nav>
+  </aside>
+
+  <div class="main-content">
+    <header class="topbar">
+      <button class="menu-toggle" id="menuToggle">☰</button>
+      <h1>Settings</h1>
+    </header>
+
+    <main class="content-area">
+      <section class="card">
+        <h3>Shop Profile</h3>
+        <form id="shopForm">
+          <label>Shop Name<input name="shopName" type="text" required maxlength="50" /></label>
+          <label>Description<textarea name="description" maxlength="500" required></textarea></label>
+          <div class="form-row">
+            <label>Hostel Block
+              <select name="hostelBlock" required>
+                <option value="">Select</option>
+                <option>A</option><option>B</option><option>C</option><option>D</option>
+                <option>E</option><option>F</option><option>G</option><option>H</option>
+              </select>
+            </label>
+            <label>Opening Time<input name="openingTime" type="time" required /></label>
+            <label>Closing Time<input name="closingTime" type="time" required /></label>
+          </div>
+        </form>
+        <button class="btn btn-primary" id="saveShopBtn">Save Profile</button>
+      </section>
+
+      <section class="card">
+        <h3>Account</h3>
+        <div id="accountInfo"></div>
+        <button class="btn btn-danger" id="logoutBtn">Logout</button>
+      </section>
+
+      <section class="card">
+        <h3>Change Password</h3>
+        <form id="passwordForm">
+          <label>Current Password<input name="currentPassword" type="password" required /></label>
+          <label>New Password<input name="newPassword" type="password" minlength="6" required /></label>
+        </form>
+        <button class="btn btn-secondary" id="changePassBtn">Change Password</button>
+      </section>
+    </main>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="/js/core/security.js"></script>
+  <script src="/js/core/api.js"></script>
+  <script src="/js/core/auth.js"></script>
+  <script src="/js/utils/helpers.js"></script>
+  <script src="/js/pages/settings.js"></script>
+</body>
+</html>

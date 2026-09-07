@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' http://localhost:5000 ws://localhost:5000; font-src 'self' https://fonts.gstatic.com;" />
+  <meta name="description" content="HostelEats - Food delivery for hostel students" />
+  <title>HostelEats - Order Food</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/responsive.css" />
+</head>
+<body>
+  <div id="app">
+    <header class="app-header">
+      <div class="container header-inner">
+        <a href="/" class="logo">HostelEats</a>
+        <div class="search-wrap">
+          <input type="search" id="searchInput" placeholder="Search vendors or dishes..." />
+        </div>
+        <a href="/checkout.html" class="cart-btn" id="cartBtn">
+          <span class="cart-icon">🛒</span>
+          <span class="cart-badge" id="cartBadge">0</span>
+        </a>
+        <a href="/profile.html" class="profile-btn">👤</a>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="container">
+        <h1>Hot food, delivered to your room</h1>
+        <p>Skip the mess. Order from your favourite hostel shops.</p>
+      </div>
+    </section>
+
+    <section class="categories container">
+      <h2 class="section-title">Categories</h2>
+      <div class="category-pills" id="categoryPills"></div>
+    </section>
+
+    <main class="container vendors-section">
+      <h2 class="section-title">Vendors</h2>
+      <div id="vendorsList" class="vendors-grid">
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+      </div>
+    </main>
+
+    <nav class="bottom-nav">
+      <a href="/" class="active"><span>🏠</span><small>Home</small></a>
+      <a href="/orders.html"><span>📦</span><small>Orders</small></a>
+      <a href="/checkout.html"><span>🛒</span><small>Cart</small></a>
+      <a href="/profile.html"><span>👤</span><small>Profile</small></a>
+    </nav>
+
+    <div id="toast" class="toast"></div>
+  </div>
+
+  <script src="/js/core/security.js"></script>
+  <script src="/js/core/api.js"></script>
+  <script src="/js/core/auth.js"></script>
+  <script src="/js/core/socket.js"></script>
+  <script src="/js/utils/helpers.js"></script>
+  <script src="/js/pages/cart.js"></script>
+  <script src="/js/pages/homepage.js"></script>
+</body>
+</html>

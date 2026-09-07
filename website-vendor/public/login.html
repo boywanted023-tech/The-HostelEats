@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; connect-src 'self' http://localhost:5000;" />
+  <title>Vendor Login - HostelEats</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/responsive.css" />
+</head>
+<body style="display:flex;align-items:center;justify-content:center;min-height:100vh;background:#2C3E50">
+  <div style="background:#fff;padding:32px;border-radius:12px;width:90%;max-width:360px;box-shadow:0 8px 24px rgba(0,0,0,0.2)">
+    <h2 style="text-align:center;color:#2C3E50;margin-bottom:8px">HostelEats</h2>
+    <p style="text-align:center;color:#7F8C8D;margin-bottom:24px;font-size:14px">Vendor Portal</p>
+
+    <form id="loginForm">
+      <label style="margin-bottom:14px">Email
+        <input name="email" type="email" required />
+      </label>
+      <label style="margin-bottom:20px">Password
+        <input name="password" type="password" required />
+      </label>
+    </form>
+
+    <button class="btn btn-primary btn-block" id="loginBtn">Login</button>
+    <p id="error" style="color:#E74C3C;text-align:center;margin-top:12px;display:none"></p>
+  </div>
+
+  <script src="/js/core/security.js"></script>
+  <script src="/js/core/api.js"></script>
+  <script>
+    document.getElementById('loginBtn').addEventListener('click', async () => {
+      const fd = new FormData(document.getElementById('loginForm'));
+      const errEl = document.getElementById('error');
+      errEl.style.display = 'none';
+      try {
+        const base = (location.hostname === 'localhost' || location.hostname === '127.0.0.1')
+          ? 'http://localhost:5000/api' : '/api';
+        const res = await fetch(base + '/auth/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'X-Device-Fingerprint': window.Security.deviceFingerprint },
+          credentials: 'include',
+          body: JSON.stringify({ email: fd.get('email'), password: fd.get('password') })
+        });
+        const data = await res.json();
+        if (!res.ok || !data.success) throw new Error(data.message || 'Login failed');
+        if (!['vendor', 'admin'].includes(data.user.role)) {
+          throw new Error('Vendor account required');
+        }
+        window.location.href = '/';
+      } catch (err) {
+        errEl.textContent = err.message;
+        errEl.style.display = 'block';
+      }
+    });
+  </script>
+</body>
+</html>

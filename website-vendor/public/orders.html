@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; connect-src 'self' http://localhost:5000 ws://localhost:5000;" />
+  <title>Orders - HostelEats Vendor</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/responsive.css" />
+</head>
+<body>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header"><h2>HostelEats</h2></div>
+    <nav class="sidebar-nav">
+      <a href="/"><span>📊</span> Dashboard</a>
+      <a href="/orders.html" class="active"><span>📦</span> Orders</a>
+      <a href="/menu-management.html"><span>🍽️</span> Menu</a>
+      <a href="/earnings.html"><span>💰</span> Earnings</a>
+      <a href="/settings.html"><span>⚙️</span> Settings</a>
+      <a href="#" id="logoutLink"><span>🚪</span> Logout</a>
+    </nav>
+  </aside>
+
+  <div class="main-content">
+    <header class="topbar">
+      <button class="menu-toggle" id="menuToggle">☰</button>
+      <h1>Orders</h1>
+    </header>
+
+    <main class="content-area">
+      <div class="filter-bar">
+        <select id="statusFilter">
+          <option value="">All Status</option>
+          <option>Pending</option><option>Confirmed</option><option>Preparing</option>
+          <option>Ready</option><option>Picked</option><option>Delivered</option><option>Cancelled</option>
+        </select>
+        <input type="date" id="dateFilter" />
+      </div>
+
+      <div id="ordersContainer"></div>
+    </main>
+  </div>
+
+  <div id="orderModal" class="modal hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="orderModalTitle">Order Details</h3>
+        <button class="modal-close" id="orderModalClose">✕</button>
+      </div>
+      <div id="orderDetails"></div>
+      <div class="modal-footer" id="orderActions"></div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast"></div>
+  <audio id="alertSound" preload="auto">
+    <source src="data:audio/wav;base64,UklGRlIFAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YS4F" type="audio/wav">
+  </audio>
+
+  <script src="/js/core/security.js"></script>
+  <script src="/js/core/api.js"></script>
+  <script src="/js/core/auth.js"></script>
+  <script src="/js/core/socket.js"></script>
+  <script src="/js/utils/helpers.js"></script>
+  <script src="/js/pages/orders.js"></script>
+</body>
+</html>

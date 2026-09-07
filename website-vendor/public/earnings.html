@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; connect-src 'self' http://localhost:5000;" />
+  <title>Earnings - HostelEats Vendor</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/responsive.css" />
+</head>
+<body>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header"><h2>HostelEats</h2></div>
+    <nav class="sidebar-nav">
+      <a href="/"><span>📊</span> Dashboard</a>
+      <a href="/orders.html"><span>📦</span> Orders</a>
+      <a href="/menu-management.html"><span>🍽️</span> Menu</a>
+      <a href="/earnings.html" class="active"><span>💰</span> Earnings</a>
+      <a href="/settings.html"><span>⚙️</span> Settings</a>
+      <a href="#" id="logoutLink"><span>🚪</span> Logout</a>
+    </nav>
+  </aside>
+
+  <div class="main-content">
+    <header class="topbar">
+      <button class="menu-toggle" id="menuToggle">☰</button>
+      <h1>Earnings</h1>
+      <select id="periodSelect">
+        <option value="7">Last 7 days</option>
+        <option value="30" selected>Last 30 days</option>
+        <option value="90">Last 90 days</option>
+      </select>
+    </header>
+
+    <main class="content-area">
+      <div class="stat-grid">
+        <div class="stat-card"><div class="stat-label">Total Revenue</div><div class="stat-value" id="totalRevenue">-</div></div>
+        <div class="stat-card"><div class="stat-label">Orders</div><div class="stat-value" id="totalOrders">-</div></div>
+        <div class="stat-card"><div class="stat-label">Commission</div><div class="stat-value" id="totalCommission">-</div></div>
+        <div class="stat-card highlight"><div class="stat-label">Net Earnings</div><div class="stat-value" id="netEarnings">-</div></div>
+      </div>
+
+      <section class="card">
+        <h3>Revenue Trend</h3>
+        <canvas id="revenueChart" height="80"></canvas>
+      </section>
+    </main>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script src="/js/core/security.js"></script>
+  <script src="/js/core/api.js"></script>
+  <script src="/js/core/auth.js"></script>
+  <script src="/js/utils/helpers.js"></script>
+  <script src="/js/pages/earnings.js"></script>
+</body>
+</html>
